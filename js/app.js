@@ -65,7 +65,7 @@ function productVote(event) {
 
   var nextProductIndex2 = Math.floor(Math.random() * Products.length);
   Products[productIndex2].views++;
-    console.log(Products[productIndex2].name + ' views', Products[productIndex2].views);
+  console.log(Products[productIndex2].name + ' views', Products[productIndex2].views);
   while ((nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1) || (nextProductIndex2 === nextProductIndex3)) {
     nextProductIndex2 = Math.floor(Math.random() * Products.length);
     // Products[productIndex2].views++;
@@ -74,7 +74,7 @@ function productVote(event) {
 
   var nextProductIndex3 = Math.floor(Math.random() * Products.length);
   Products[productIndex3].views++;
-    console.log(Products[productIndex3].name + ' views', Products[productIndex3].views);
+  console.log(Products[productIndex3].name + ' views', Products[productIndex3].views);
   while ((nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === nextProductIndex2)) {
     nextProductIndex3 = Math.floor(Math.random() * Products.length);
     // Products[productIndex3].views++;
