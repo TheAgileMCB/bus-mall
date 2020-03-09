@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+html{
+  background: linear-gradient(to bottom right, rgb(66, 64, 64), rgba(53, 107, 143, 0.781), rgba(97, 194, 233, 0.842), rgb(66, 64, 64));
+  text-align: center;
+  color: white;
+  height: 1000px;
+}
+
+body > header, main, footer {
+  margin: auto;
+  width: 1200px;
+}
+
+h1 {
+font-size: 4rem;
+}
+
+h3 {
+font-size: 2rem;
+}
+
+main {
+  margin-top: 30px;
+  height: 600px;
+}
+
+img {
+  width: 300px;
+  vertical-align: top;
+}
