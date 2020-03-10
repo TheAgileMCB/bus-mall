@@ -1,8 +1,7 @@
 'use strict';
 console.log('ready to rock');
 
-var rounds = 5;
-// Math.floor(Math.random() * 25);
+var rounds = Math.floor(Math.random() * 25);
 console.log(rounds);
 var imageElements = document.getElementsByTagName('img');
 var Products = [];
