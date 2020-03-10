@@ -55,4 +55,12 @@ ul {
   list-style-type: disc;
   list-style-position: inside;
   margin: 15px;
+  display:inline-block;
+}
+
+#product-chart {
+  border: double 6px white;
+  border-radius: 30px;
+  background-color: rgba(53, 107, 143, 1);
+  vertical-align: 90px;
 }
