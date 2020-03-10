@@ -1,8 +1,7 @@
 'use strict';
 console.log('ready to rock');
 
-var rounds = 5;
-// Math.floor(Math.random() * 25);
+var rounds = Math.floor(Math.random() * 25);
 console.log(rounds);
 var imageElements = document.getElementsByTagName('img');
 var Products = [];
@@ -44,6 +43,7 @@ new Product('Safety Wine Glass', '../images/wine-glass.jpg');
 
 Product.prototype.getClickShare = function() {
   ((this.clicks / totalClicks)/this.views) * 100;
+  // total views, total clicks,
   // console.log(this.getClickShare());
 };
 
@@ -105,7 +105,7 @@ function productVote(event) {
   imageElements[1].src = Products[productIndex2].imageURL;
   imageElements[2].src = Products[productIndex3].imageURL;
 
-  if(totalClicks >= rounds) {
+  if(totalClicks === rounds) {
     // var footerElement = document.getElementsByTagName('footer')[0];
     // footerElement.textContent = `${Products.clicks[productIndex1]}, ${Products.clicks[productIndex2]}, ${Products.clicks[productIndex3]}`;
   // }
@@ -114,7 +114,17 @@ function productVote(event) {
       Products[i].renderList();
       console.log(Products[i].clickshare);
     }
-  }
+
+    for (let i = 0; i < imageElements.length; i++) {
+      imageElements[i].removeEventListener('click', productVote);
+    }
+
+
+  // } else if (totalClicks > rounds) {
+  //   for(let i = 0; i < imageElements.length; i++) {
+  //   imageElements[i].removeEventListener('click', productVote);
+  // }
+}
 }
 
 for(let i = 0; i < imageElements.length; i++) {
