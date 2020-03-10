@@ -13,12 +13,10 @@
 <body>
   <header id="header">
     <h1>BusMall</h1>
-    <h3>It's everything you'll ever need.</h3>
-    <nav id="site-nav">
-      <ul>
-        <li></li>
-      </ul>
+    <h3 class="transform">Everything you'll ever need.</h3>
+    <nav>
     </nav>
+      <button class="hidden-div"><a href="#stats"><h3>Jump to the Stats!</h3></a></button>
 
   </header>
   <main id="main-content">
@@ -26,17 +24,24 @@
     <img id="Product1" src="/images/bag.jpg" alt="This is a product">
     <img id="Product2" src="/images/banana.jpg" alt="This is another product">
     <img id="Product3" src="/images/bathroom.jpg" alt="This is yet another product">
-    
+
 
   </main>
-  <aside>
-    <h2>Stats</h2>
+  <aside class="hidden-div" id="stats">
+    <h2>Statistics</h2>
+    <div id="bar-chart-div">
+      <canvas id="product-bar-chart" width=600px height=600px>
+      </canvas>
+    </div>
+    <div id="pie-chart-div">
+      <canvas id="product-pie-chart" width=600px height=600px>
+      </canvas>
+    </div>
     <ul id="product-list">
 
     </ul>
-    <canvas id="product-chart" width=400px height=400px>
+    
 
-    </canvas>
   </aside>
   <footer id="footer">
     <h3></h3>
