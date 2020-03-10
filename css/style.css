@@ -6,7 +6,8 @@ html{
   background: linear-gradient(to bottom right, rgb(66, 64, 64), rgba(53, 107, 143, 0.781), rgba(97, 194, 233, 0.842), rgb(66, 64, 64));
   text-align: center;
   color: white;
-  height: 1000px;
+  height: 1200px;
+  font-family: sans-serif;
 }
 
 body > header, main, footer {
@@ -39,11 +40,12 @@ img {
 }
 
 aside {
-  background: linear-gradient(to bottom, rgb(66, 64, 64), rgba(53, 107, 143, 0.781), rgba(97, 194, 233, 0.842), rgb(66, 64, 64));
-  width: 300px;
-  height: 600px;
+  background: linear-gradient(to bottom, rgb(66, 64, 64), rgba(53, 107, 143, 1), rgb(66, 64, 64));
   border: double 6px white;
   border-radius: 30px;
-  display: inline-block;
+  display: block;
   margin: 15px;
+  font-family: monospace;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
 }
