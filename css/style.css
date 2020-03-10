@@ -11,11 +11,16 @@ html{
 
 body > header, main, footer {
   margin: auto;
-  width: 1200px;
+  width: 1400px;
 }
 
 h1 {
 font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+  padding: 15px;
 }
 
 h3 {
@@ -30,4 +35,15 @@ main {
 img {
   width: 300px;
   vertical-align: top;
+  margin: 15px;
+}
+
+aside {
+  background: linear-gradient(to bottom, rgb(66, 64, 64), rgba(53, 107, 143, 0.781), rgba(97, 194, 233, 0.842), rgb(66, 64, 64));
+  width: 300px;
+  height: 600px;
+  border: double 6px white;
+  border-radius: 30px;
+  display: inline-block;
+  margin: 15px;
 }

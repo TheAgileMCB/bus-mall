@@ -14,6 +14,7 @@ function Product(name, imageURL) {
   this.imageURL = imageURL;
   this.views = 0;
   this.clicks = 0;
+  this.clickShare = this.getClickShare;
   // console.log(Products);
   Products.push(this);
 }
@@ -38,6 +39,12 @@ new Product('Unicorn Meat', '../images/unicorn.jpg');
 new Product('Cthulhu Tentacle 1TB USB Drive', '../images/usb.gif');
 new Product('M.C. Escher Watering Can', '../images/water-can.jpg');
 new Product('Safety Wine Glass', '../images/wine-glass.jpg');
+
+Product.prototype.getClickShare = function() {
+  (this.clicks / this.views) * 100;
+};
+
+var productList = document.getElementById('product-list');
 
 function productVote(event) {
   totalClicks++;
@@ -90,8 +97,18 @@ function productVote(event) {
   imageElements[2].src = Products[productIndex3].imageURL;
 
   if(totalClicks >= rounds) {
-    var footerElement = document.getElementsByTagName('footer')[0];
-    footerElement.textContent = `${Products.clicks[productIndex1]}, ${Products.clicks[productIndex2]}, ${Products.clicks[productIndex3]}`;
+    // var footerElement = document.getElementsByTagName('footer')[0];
+    // footerElement.textContent = `${Products.clicks[productIndex1]}, ${Products.clicks[productIndex2]}, ${Products.clicks[productIndex3]}`;
+  // }
+    Product.prototype.renderList = function() {
+      for (let i = 0; i < Products.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = `${this.name} had ${this.clicks} and was shown ${this.views} times, resulting in a clickshare of ${this.clickShare}%!`;
+        productList.appendChild(listItem);
+
+        Products[i].renderList();
+      }
+    };
   }
 }
 
