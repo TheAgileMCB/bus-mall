@@ -1,56 +1,43 @@
 'use strict';
 console.log('ready to rock');
 
+//////////////////Global Variables///////////////////////
 var rounds = Math.ceil(Math.random() * 20) + 5;
-console.log(rounds);
 var Products = [];
 var imageElements = document.getElementsByTagName('img');
-// var totalViews = rounds * 3;
 var totalClicks = 0;
 var productIndex1 = 0;
 var productIndex2 = 1;
 var productIndex3 = 2;
 
-function Product(name, imageURL) {
+////////////////Constructor Function//////////////////////////
+function Product(name, imageURL, views, clicks, clickShare) {
   this.name = name;
   this.imageURL = imageURL;
-  this.views = 0;
-  this.clicks = 0;
-  this.clickShare = 0;
-  // console.log(Products);
+
+  if (views) {
+    this.views = views;
+  } else {
+    this.views = 0;
+  }
+
+  if (clicks) {
+    this.clicks = clicks;
+  } else {
+    this.clicks = 0;
+  }
+
+  if (clickShare) {
+    this.clickShare = clickShare;
+  } else {
+    this.clickShare = 0;
+  }
+
   Products.push(this);
 }
 
-
-
-new Product('R2-D2 Bag', 'images/bag.jpg');
-new Product('Banana Slicer', 'images/banana.jpg');
-new Product('iPad Toilet Paper Holder', 'images/bathroom.jpg');
-new Product('Rubber Shoe Shawl', 'images/boots.jpg');
-new Product('All-In-One Breakfast Machine', 'images/breakfast.jpg');
-new Product('Meatball Bubble Gum', 'images/bubblegum.jpg');
-new Product('Core Toning Chair', 'images/chair.jpg');
-new Product('Kneel-Before-Your-God Cthulhu statuette', 'images/cthulhu.jpg');
-new Product('Doggy Duck Lips', 'images/dog-duck.jpg');
-new Product('Dragon Meat', 'images/dragon.jpg');
-new Product('Pen Cap Utensils', 'images/pen.jpg');
-new Product('Pet Sweep', 'images/pet-sweep.jpg');
-new Product('Pizza Scissors', 'images/scissors.jpg');
-new Product('Shark Sleeping Bag', 'images/shark.jpg');
-new Product('Baby  Sweep', 'images/sweep.png');
-new Product('Taun Taun Toddler Sleeping Bag', 'images/tauntaun.jpg');
-new Product('Unicorn Meat', 'images/unicorn.jpg');
-new Product('Cthulhu Tentacle 1TB USB Drive', 'images/usb.gif');
-new Product('M.C. Escher Watering Can', 'images/water-can.jpg');
-new Product('Safety Wine Glass', 'images/wine-glass.jpg');
-
-// Product.prototype.getClickShare = function() {
-//   ((this.clicks / totalClicks) / totalViews) * 100;
-//   // total views, total clicks,
-//   // console.log(this.getClickShare(i));
-// };
-
-Product.prototype.renderList = function() {
+//////////////////////Functions////////////////////////////
+Product.prototype.renderList = function () {
   var listItem = document.createElement('li');
   listItem.textContent = `${this.name} had ${this.clicks} clicks and was shown ${this.views} times, resulting in a clickshare of ${this.clickShare}%!`;
   productList.appendChild(listItem);
@@ -58,16 +45,49 @@ Product.prototype.renderList = function() {
 
 function getProducts(nameOfThePropertyIWant) {
   var answer = [];
-  for(var i = 0; i < Products.length; i++){
+  for (var i = 0; i < Products.length; i++) {
     answer[i] = Products[i][nameOfThePropertyIWant];
   }
-  console.log(answer);
   return answer;
+}
+
+var productString = localStorage.getItem('Products');
+
+if (productString) {
+  var arrayOfNotProductObjects = JSON.parse(productString);
+
+  for (let i = 0; i < arrayOfNotProductObjects.length; i++) {
+    new Product(arrayOfNotProductObjects[i].name,
+      arrayOfNotProductObjects[i].imageURL,
+      arrayOfNotProductObjects[i].views,
+      arrayOfNotProductObjects[i].clicks,
+      arrayOfNotProductObjects[i].clickShare);
+  }
+} else {
+  new Product('R2-D2 Bag', 'images/bag.jpg');
+  new Product('Banana Slicer', 'images/banana.jpg');
+  new Product('iPad Toilet Paper Holder', 'images/bathroom.jpg');
+  new Product('Rubber Shoe Shawl', 'images/boots.jpg');
+  new Product('All-In-One Breakfast Machine', 'images/breakfast.jpg');
+  new Product('Meatball Bubble Gum', 'images/bubblegum.jpg');
+  new Product('Core Toning Chair', 'images/chair.jpg');
+  new Product('Kneel-Before-Your-God Cthulhu statuette', 'images/cthulhu.jpg');
+  new Product('Doggy Duck Lips', 'images/dog-duck.jpg');
+  new Product('Dragon Meat', 'images/dragon.jpg');
+  new Product('Pen Cap Utensils', 'images/pen.jpg');
+  new Product('Pet Sweep', 'images/pet-sweep.jpg');
+  new Product('Pizza Scissors', 'images/scissors.jpg');
+  new Product('Shark Sleeping Bag', 'images/shark.jpg');
+  new Product('Baby  Sweep', 'images/sweep.png');
+  new Product('Taun Taun Toddler Sleeping Bag', 'images/tauntaun.jpg');
+  new Product('Unicorn Meat', 'images/unicorn.jpg');
+  new Product('Cthulhu Tentacle 1TB USB Drive', 'images/usb.gif');
+  new Product('M.C. Escher Watering Can', 'images/water-can.jpg');
+  new Product('Safety Wine Glass', 'images/wine-glass.jpg');
 }
 
 function showDiv() {
   var showMyDiv = document.getElementsByClassName('hidden-div');
-  console.log(showMyDiv);
   showMyDiv[0].style.display = 'block';
   showMyDiv[1].style.display = 'block';
 }
@@ -83,37 +103,23 @@ function productVote(event) {
   } else if (event.srcElement.id === 'Product3') {
     Products[productIndex3].clicks++;
   }
-  console.log('totalClicks:', totalClicks);
-  console.log(Products[productIndex1].name + ' clicks', Products[productIndex1].clicks);
-  console.log(Products[productIndex2].name + ' clicks', Products[productIndex2].clicks);
-  console.log(Products[productIndex3].name + ' clicks', Products[productIndex3].clicks);
-
 
   var nextProductIndex1 = Math.floor(Math.random() * Products.length);
   Products[productIndex1].views++;
-  console.log(Products[productIndex1].name + ' views', Products[productIndex1].views);
   while ((nextProductIndex1 === productIndex1) || (nextProductIndex1 === productIndex2) || (nextProductIndex1 === productIndex3) || (nextProductIndex1 === nextProductIndex2) || (nextProductIndex1 === nextProductIndex3)) {
     nextProductIndex1 = Math.floor(Math.random() * Products.length);
-    // Products[productIndex1].views++;
-    // console.log('views1:', Products[productIndex1].views++);
   }
 
   var nextProductIndex2 = Math.floor(Math.random() * Products.length);
   Products[productIndex2].views++;
-  console.log(Products[productIndex2].name + ' views', Products[productIndex2].views);
   while ((nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1) || (nextProductIndex2 === nextProductIndex3)) {
     nextProductIndex2 = Math.floor(Math.random() * Products.length);
-    // Products[productIndex2].views++;
-    // console.log('views2:', Products[productIndex1].views++);
   }
 
   var nextProductIndex3 = Math.floor(Math.random() * Products.length);
   Products[productIndex3].views++;
-  console.log(Products[productIndex3].name + ' views', Products[productIndex3].views);
   while ((nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === nextProductIndex2)) {
     nextProductIndex3 = Math.floor(Math.random() * Products.length);
-    // Products[productIndex3].views++;
-    // console.log('views3', Products[productIndex1].views++);
   }
 
   productIndex1 = nextProductIndex1;
@@ -124,44 +130,57 @@ function productVote(event) {
   imageElements[1].src = Products[productIndex2].imageURL;
   imageElements[2].src = Products[productIndex3].imageURL;
 
-  if(totalClicks === rounds) {
-    // var footerElement = document.getElementsByTagName('footer')[0];
-    // footerElement.textContent = `${Products.clicks[productIndex1]}, ${Products.clicks[productIndex2]}, ${Products.clicks[productIndex3]}`;
-  // }
+  if (totalClicks === rounds) {
     for (let i = 0; i < Products.length; i++) {
-      Products[i].clickShare = ((Products[i]['clicks']/ rounds) * 100).toFixed(2);
+      Products[i].clickShare = ((Products[i]['clicks'] / rounds) * 100).toFixed(2);
       Products[i].renderList();
-      console.log(Products[i].clickshare);
     }
 
     for (let i = 0; i < imageElements.length; i++) {
       imageElements[i].removeEventListener('click', productVote);
     }
 
+    storeProduct();
     showDiv();
     runBarChart();
     runPieChart();
   }
 }
 
+for (let i = 0; i < imageElements.length; i++) {
+  imageElements[i].addEventListener('click', productVote);
+}
 
+// var productForm = document.getElementById('product-form');
+// productForm.addEventListener('submit', function(event) {
+//   event.preventDefault();
+//   console.log('forms are listening');
+
+//   var productProvided = document.getElementById('product').value;
+//   console.log(productProvided);
+
+//   localStorage.setItem('productName', 'productProvided');
+//   productForm.textContent = productProvided;
+// });
+
+// var storedProduct = localStorage.getItem('productName');
+// if(storedProduct) {
+//   productForm.textContent = storedProduct;
+// }
+
+function storeProduct() {
+  localStorage.setItem('Products', JSON.stringify(Products));
+}
+
+///////////////////////////Charts////////////////////////////
 function runBarChart() {
-  // chart code thanks to https://www.chartjs.org/docs/latest/
   var ctx = document.getElementById('product-bar-chart').getContext('2d');
-  // eslint-disable-next-line no-undef
   new Chart(ctx, {
     type: 'bar',
     data: {
-      // what does labels do?
       labels: getProducts('name'),
-      // what does datasets do?
-      // it's an array of objects
       datasets: [{
-        // what does this label do?
-        // key, legend
         label: 'Clicks',
-        // what does this data do?
-        // actually the values in the chart
         data: getProducts('clicks'),
         backgroundColor: [
           'rgba(255, 99, 132, 0.8)',
@@ -210,11 +229,7 @@ function runBarChart() {
         borderWidth: 1
       },
       {
-        // what does this label do?
-        // key, legend
         label: 'Views',
-        // what does this data do?
-        // actually the values in the chart
         data: getProducts('views'),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -276,24 +291,14 @@ function runBarChart() {
   });
 }
 
-
 function runPieChart() {
-  // chart code thanks to https://www.chartjs.org/docs/latest/
   var ctx = document.getElementById('product-pie-chart').getContext('2d');
-  // eslint-disable-next-line no-undef
   new Chart(ctx, {
     type: 'doughnut',
     data: {
-      // what does labels do?
       labels: getProducts('name'),
-      // what does datasets do?
-      // it's an array of objects
       datasets: [{
-        // what does this label do?
-        // key, legend
         label: 'Clickshare',
-        // what does this data do?
-        // actually the values in the chart
         data: getProducts('clickShare'),
         backgroundColor: [
           'rgba(255, 99, 132, 0.4)',
@@ -353,12 +358,4 @@ function runPieChart() {
       }
     }
   });
-}
-
-
-
-
-for(let i = 0; i < imageElements.length; i++) {
-  console.log('Events are happening');
-  imageElements[i].addEventListener('click', productVote);
 }
