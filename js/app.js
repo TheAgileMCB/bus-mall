@@ -23,26 +23,26 @@ function Product(name, imageURL) {
 
 
 
-new Product('R2-D2 Bag', '../images/bag.jpg');
-new Product('Banana Slicer', '../images/banana.jpg');
-new Product('iPad Toilet Paper Holder', '../images/bathroom.jpg');
-new Product('Rubber Shoe Shawl', '../images/boots.jpg');
-new Product('All-In-One Breakfast Machine', '../images/breakfast.jpg');
-new Product('Meatball Bubble Gum', '../images/bubblegum.jpg');
-new Product('Core Toning Chair', '../images/chair.jpg');
-new Product('Kneel-Before-Your-God Cthulhu statuette', '../images/cthulhu.jpg');
-new Product('Doggy Duck Lips', '../images/dog-duck.jpg');
-new Product('Dragon Meat', '../images/dragon.jpg');
-new Product('Pen Cap Utensils', '../images/pen.jpg');
-new Product('Pet Sweep', '../images/pet-sweep.jpg');
-new Product('Pizza Scissors', '../images/scissors.jpg');
-new Product('Shark Sleeping Bag', '../images/shark.jpg');
-new Product('Baby  Sweep', '../images/sweep.png');
-new Product('Taun Taun Toddler Sleeping Bag', '../images/tauntaun.jpg');
-new Product('Unicorn Meat', '../images/unicorn.jpg');
-new Product('Cthulhu Tentacle 1TB USB Drive', '../images/usb.gif');
-new Product('M.C. Escher Watering Can', '../images/water-can.jpg');
-new Product('Safety Wine Glass', '../images/wine-glass.jpg');
+new Product('R2-D2 Bag', 'images/bag.jpg');
+new Product('Banana Slicer', 'images/banana.jpg');
+new Product('iPad Toilet Paper Holder', 'images/bathroom.jpg');
+new Product('Rubber Shoe Shawl', 'images/boots.jpg');
+new Product('All-In-One Breakfast Machine', 'images/breakfast.jpg');
+new Product('Meatball Bubble Gum', 'images/bubblegum.jpg');
+new Product('Core Toning Chair', 'images/chair.jpg');
+new Product('Kneel-Before-Your-God Cthulhu statuette', 'images/cthulhu.jpg');
+new Product('Doggy Duck Lips', 'images/dog-duck.jpg');
+new Product('Dragon Meat', 'images/dragon.jpg');
+new Product('Pen Cap Utensils', 'images/pen.jpg');
+new Product('Pet Sweep', 'images/pet-sweep.jpg');
+new Product('Pizza Scissors', 'images/scissors.jpg');
+new Product('Shark Sleeping Bag', 'images/shark.jpg');
+new Product('Baby  Sweep', 'images/sweep.png');
+new Product('Taun Taun Toddler Sleeping Bag', 'images/tauntaun.jpg');
+new Product('Unicorn Meat', 'images/unicorn.jpg');
+new Product('Cthulhu Tentacle 1TB USB Drive', 'images/usb.gif');
+new Product('M.C. Escher Watering Can', 'images/water-can.jpg');
+new Product('Safety Wine Glass', 'images/wine-glass.jpg');
 
 // Product.prototype.getClickShare = function() {
 //   ((this.clicks / totalClicks) / totalViews) * 100;
