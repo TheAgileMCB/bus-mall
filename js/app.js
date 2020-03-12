@@ -151,23 +151,6 @@ for (let i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', productVote);
 }
 
-// var productForm = document.getElementById('product-form');
-// productForm.addEventListener('submit', function(event) {
-//   event.preventDefault();
-//   console.log('forms are listening');
-
-//   var productProvided = document.getElementById('product').value;
-//   console.log(productProvided);
-
-//   localStorage.setItem('productName', 'productProvided');
-//   productForm.textContent = productProvided;
-// });
-
-// var storedProduct = localStorage.getItem('productName');
-// if(storedProduct) {
-//   productForm.textContent = storedProduct;
-// }
-
 function storeProduct() {
   localStorage.setItem('Products', JSON.stringify(Products));
 }
